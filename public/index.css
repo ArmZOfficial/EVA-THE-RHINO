@@ -928,7 +928,7 @@ body {
   color: var(--accent-red);
 }
 
-/* ===== BOOKING BOX — Animated Gradient Glow ===== */
+/* ===== BOOKING BOX — Glow Effect ===== */
 .booking-box {
   background-color: var(--dark-color);
   padding: 40px;
@@ -937,35 +937,13 @@ body {
   align-items: center;
   border-radius: 12px;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.booking-box::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(45deg, var(--accent-red), #ff6b6b, var(--accent-red), #ff4081, var(--accent-red));
-  background-size: 300% 300%;
-  animation: gradientGlow 4s ease infinite;
-  z-index: -1;
-  border-radius: 14px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.booking-box:hover::before {
-  opacity: 1;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .booking-box:hover {
   transform: scale(1.01);
-}
-
-@keyframes gradientGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  box-shadow: 0 0 30px var(--accent-red-glow), 0 0 60px rgba(227, 48, 61, 0.15);
 }
 
 .booking-content {
