@@ -22,6 +22,19 @@ async function login() {
   }
   
   try {
+    // 1. Verify password first
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pwd })
+    });
+    
+    if (!verifyRes.ok) {
+      showToast('Incorrect password', 'error');
+      return;
+    }
+
+    // 2. Fetch data if password is correct
     const res = await fetch('/api/data');
     if (res.ok) {
       appData = await res.json();

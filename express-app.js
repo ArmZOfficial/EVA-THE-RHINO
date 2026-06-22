@@ -81,6 +81,16 @@ app.get('/api/tiktok-info', async (req, res) => {
     }
 });
 
+// API: Verify Password
+app.post('/api/verify', (req, res) => {
+    const { password } = req.body;
+    if (password === ADMIN_PASSWORD) {
+        res.json({ success: true });
+    } else {
+        res.status(401).json({ success: false, error: 'Unauthorized: Incorrect password' });
+    }
+});
+
 // API: Save Data (Requires Password)
 app.post('/api/data', async (req, res) => {
     const { password, data } = req.body;
