@@ -17,7 +17,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
 
 // Helper to read data
 async function readData() {
-    if (process.env.KV_REST_API_URL) {
+    if (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL) {
         try {
             const data = await kv.get('appData');
             if (data) return data;
@@ -36,7 +36,7 @@ async function readData() {
 
 // Helper to write data
 async function writeData(data) {
-    if (process.env.KV_REST_API_URL) {
+    if (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL) {
         try {
             await kv.set('appData', data);
             return;
