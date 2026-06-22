@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { kv } = require('@vercel/kv');
+const { createClient } = require('@vercel/kv');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,9 +15,17 @@ app.use(express.static('public'));
 // Admin password from ENV or hardcoded local fallback
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
 
+// Initialize KV client only if env vars are present
+const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+let kv;
+if (kvUrl && kvToken) {
+    kv = createClient({ url: kvUrl, token: kvToken });
+}
+
 // Helper to read data
 async function readData() {
-    if (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL) {
+    if (kv) {
         try {
             const data = await kv.get('appData');
             if (data) return data;
@@ -36,7 +44,7 @@ async function readData() {
 
 // Helper to write data
 async function writeData(data) {
-    if (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL) {
+    if (kv) {
         try {
             await kv.set('appData', data);
             return;
