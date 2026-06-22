@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - EVA THE RHINO</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -93,6 +94,15 @@
       z-index: 100;
       box-shadow: 0 4px 15px rgba(232, 58, 66, 0.3);
     }
+
+    /* Unsaved changes indicator */
+    .btn-save.has-changes {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(232, 58, 66, 0.3); }
+      50% { box-shadow: 0 4px 25px rgba(232, 58, 66, 0.6); }
+    }
     
     .row { display: flex; gap: 20px; flex-wrap: wrap; }
     .col { flex: 1; min-width: 200px; }
@@ -129,7 +139,7 @@
     /* Toast Notifications */
     #toast-container {
       position: fixed;
-      bottom: 20px;
+      bottom: 80px;
       right: 20px;
       z-index: 9999;
       display: flex;
@@ -190,10 +200,13 @@
       border-color: var(--accent);
       transform: translateY(-5px);
     }
-    
-    /* Adjust toast container to not overlap with home button */
-    #toast-container {
-      bottom: 80px;
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 20px; }
+      .row { flex-direction: column; gap: 10px; }
+      .col { min-width: 100%; }
+      h1 { font-size: 22px; }
     }
   </style>
 </head>
@@ -210,11 +223,11 @@
     <div class="form-group" style="margin: 0 auto 20px auto;">
       <input type="password" id="password" placeholder="Enter Password" onkeypress="if(event.key === 'Enter') login()">
     </div>
-    <button class="btn" onclick="login()" style="width: 100%;">Login</button>
+    <button class="btn" onclick="login()" style="width: 100;">Login</button>
   </div>
 
   <div class="container" id="admin-section">
-    <button class="btn btn-save" onclick="saveData()">💾 Save All Changes</button>
+    <button class="btn btn-save" id="saveBtn" onclick="saveData()">💾 Save All Changes</button>
     <h1>Media Kit Dashboard</h1>
 
     <form id="admin-form">
@@ -225,6 +238,15 @@
         <div class="form-group"><label>Tagline</label><input type="text" id="general.tagline"></div>
         <div class="form-group"><label>Window</label><input type="text" id="general.window"></div>
         <div class="form-group"><label>Bio</label><textarea id="general.bio"></textarea></div>
+        <hr style="margin:20px 0;">
+        <div class="row">
+          <div class="col"><label>TikTok Handle</label><input type="text" id="general.tiktokHandle"></div>
+          <div class="col"><label>TikTok URL</label><input type="text" id="general.tiktokUrl"></div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col"><label>YouTube Handle</label><input type="text" id="general.youtubeHandle"></div>
+          <div class="col"><label>YouTube URL</label><input type="text" id="general.youtubeUrl"></div>
+        </div>
       </div>
 
       <!-- Overview Stats -->
@@ -274,6 +296,10 @@
           <div class="col"><label>Avg View</label><input type="text" id="youtubeStats.avgView"></div>
           <div class="col"><label>From Shorts %</label><input type="text" id="youtubeStats.fromShorts"></div>
         </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col"><label>Male %</label><input type="text" id="youtubeStats.male"></div>
+          <div class="col"><label>Female %</label><input type="text" id="youtubeStats.female"></div>
+        </div>
       </div>
 
       <!-- Age Stats & Demographics Details -->
@@ -319,6 +345,17 @@
       <div class="section-card">
         <h2>6. Rate Card</h2>
         <div id="rate-card-container"></div>
+      </div>
+
+      <!-- Terms & Booking -->
+      <div class="section-card">
+        <h2>7. Terms & Booking Contact</h2>
+        <div class="form-group"><label>Terms (one per line)</label><textarea id="termsBooking.terms" style="height:120px;"></textarea></div>
+        <hr style="margin:20px 0;">
+        <div class="row">
+          <div class="col"><label>Booking Email</label><input type="text" id="termsBooking.email"></div>
+          <div class="col"><label>Booking Discord</label><input type="text" id="termsBooking.discord"></div>
+        </div>
       </div>
 
     </form>

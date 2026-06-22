@@ -5,36 +5,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EVA THE RHINO — VTuber Rate Card 2026</title>
-  <meta name="description" content="Media Kit & Rate Card สำหรับ EVA THE RHINO">
+  <meta name="description" content="Media Kit & Rate Card สำหรับ EVA THE RHINO — VTuber / Content Creator คาแรกเตอร์พี่สาวสุดเซ็กซี่ TikTok & YouTube">
+  <meta name="keywords" content="EVA THE RHINO, VTuber, Rate Card, Media Kit, Content Creator, TikTok, YouTube">
+  <meta name="author" content="EVA THE RHINO">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EVA THE RHINO — VTuber Rate Card 2026">
+  <meta property="og:description" content="Media Kit & Rate Card สำหรับ EVA THE RHINO — VTuber / Content Creator ดูสถิติ, เรทการ์ด, และติดต่อร่วมงาน">
+  <meta property="og:image" content="/assets/logo.png">
+  <meta property="og:url" content="https://eva-the-rhino.vercel.app">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EVA THE RHINO — VTuber Rate Card 2026">
+  <meta name="twitter:description" content="Media Kit & Rate Card สำหรับ EVA THE RHINO — VTuber / Content Creator">
+  <meta name="twitter:image" content="/assets/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+
   <link rel="stylesheet" href="index.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "EVA THE RHINO",
+    "url": "https://eva-the-rhino.vercel.app",
+    "description": "VTuber / Content Creator",
+    "sameAs": [
+      "https://www.tiktok.com/@evatherhino",
+      "https://www.youtube.com/@evatherhino"
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">
+        EVA THE <span class="brand-red">RHINO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="#section-overview" class="active">Overview</a>
+        <a href="#section-audience">Audience</a>
+        <a href="#section-rate">Rate Card</a>
+        <a href="#section-booking">Booking</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- HERO SECTION -->
-  <section class="hero animate-on-scroll">
+  <section class="hero animate-on-scroll" id="hero">
     <div class="container hero-container">
       <div class="hero-content">
-        <img src="assets/logo.png" alt="EVA THE RHINO Logo" class="hero-logo">
-        <p class="hero-tagline" id="tagline">LOADING...</p>
-        <p class="hero-window" id="window">LOADING...</p>
+        <img src="assets/logo.png" alt="EVA THE RHINO Logo" class="hero-logo" loading="lazy">
+        <p class="hero-tagline skeleton" id="tagline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p class="hero-window skeleton" id="window">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <div class="hero-socials">
-          <a href="#" target="_blank" id="tiktokHandle">TikTok</a>
-          <a href="#" target="_blank" id="youtubeHandle">YouTube</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" id="tiktokLink"><span id="tiktokHandle">TikTok</span></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" id="youtubeLink"><span id="youtubeHandle">YouTube</span></a>
         </div>
       </div>
       <div class="hero-image">
-        <img src="assets/character.png" alt="EVA THE RHINO Character">
+        <img src="assets/character.png" alt="EVA THE RHINO Character" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- SECTION 1: AUDIENCE OVERVIEW -->
-  <section class="section animate-on-scroll">
+  <section class="section animate-on-scroll" id="section-overview">
     <div class="section-header">
       <div class="container header-container">
         <div class="header-left">
@@ -48,7 +99,7 @@
     </div>
 
     <div class="container section-content">
-      <p class="bio-text" id="bio">LOADING...</p>
+      <p class="bio-text skeleton" id="bio">&nbsp;</p>
 
       <div class="grid-4 stats-boxes">
         <div class="stat-box animate-on-scroll">
@@ -158,12 +209,18 @@
         </div>
         <div class="chart-area">
           <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(232, 58, 66, 0.25)"/>
+                <stop offset="100%" stop-color="rgba(232, 58, 66, 0.02)"/>
+              </linearGradient>
+            </defs>
             <path
               d="M0,180 L50,178 L100,170 L150,165 L200,140 L250,135 L300,125 L350,120 L400,118 L450,105 L500,102 L550,98 L600,85 L650,80 L700,75 L750,70 L800,68 L850,65 L900,45 L950,40 L1000,40 L1000,200 L0,200 Z"
-              fill="rgba(232, 58, 66, 0.15)"></path>
+              fill="url(#chartGrad)"></path>
             <path
               d="M0,180 L50,178 L100,170 L150,165 L200,140 L250,135 L300,125 L350,120 L400,118 L450,105 L500,102 L550,98 L600,85 L650,80 L700,75 L750,70 L800,68 L850,65 L900,45 L950,40 L1000,40"
-              fill="none" stroke="#e83a42" stroke-width="3"></path>
+              fill="none" stroke="#e83a42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
       </div>
@@ -172,7 +229,7 @@
   </section>
 
   <!-- SECTION 2: AUDIENCE & PERFORMANCE -->
-  <section class="section animate-on-scroll">
+  <section class="section animate-on-scroll" id="section-audience">
     <div class="section-header">
       <div class="container header-container">
         <div class="header-left">
@@ -187,7 +244,7 @@
       <!-- Demographics Top -->
       <div class="grid-2 demo-top">
         <div class="demo-col">
-          <div class="demo-title">เพศของผู้ขม - GENDER</div>
+          <div class="demo-title">เพศของผู้ชม - GENDER</div>
 
           <div class="bar-chart-row">
             <div class="bar-chart-label">TikTok</div>
@@ -259,7 +316,7 @@
             <span class="loc-val accent-red"><span id="loc_percent">-</span><span class="percent">%</span></span>
             <span class="loc-lbl" id="loc_main">-</span>
           </div>
-          <p class="loc-desc" id="loc_others">LOADING...</p>
+          <p class="loc-desc" id="loc_others">กำลังโหลด...</p>
 
           <div class="demo-title" style="margin-top: 50px;">เวลาที่คนดูเยอะ - ACTIVE HOURS</div>
           <div class="hours-chart">
@@ -319,7 +376,7 @@
   </section>
 
   <!-- SECTION 3: RATE CARD -->
-  <section class="section animate-on-scroll">
+  <section class="section animate-on-scroll" id="section-rate">
     <div class="section-header">
       <div class="container header-container">
         <div class="header-left">
@@ -342,7 +399,7 @@
       <div class="grid-2 terms-booking">
         <div class="terms-col">
           <div class="tb-title">เงื่อนไข · TERMS</div>
-          <ul class="tb-list">
+          <ul class="tb-list" id="terms-list">
             <li>รับเงินในนามบุคคลธรรมดา</li>
             <li>มัดจำ 50% ก่อนเริ่มงาน ส่วนที่เหลือชำระเมื่อส่งมอบ</li>
             <li>ลิขสิทธิ์เพลง/เสียงเป็นของผู้ว่าจ้างตามตกลง</li>
@@ -350,7 +407,7 @@
         </div>
       </div>
 
-      <div class="booking-box">
+      <div class="booking-box" id="section-booking">
         <div class="booking-content">
           <div class="tb-title red-title">ติดต่อร่วมงาน · BOOKING</div>
           <div class="contact-item">
@@ -368,11 +425,23 @@
   </section>
 
   <footer class="footer container">
-    <div>EVA THE RHINO — MEDIA KIT 2026</div>
-    <div class="page-num"><a href="admin.html" style="color: inherit; text-decoration: none;">Admin</a></div>
+    <div class="footer-left">
+      <span>EVA THE RHINO — MEDIA KIT 2026</span>
+      <div class="footer-socials">
+        <a href="https://www.tiktok.com/@evatherhino" target="_blank" rel="noopener noreferrer" title="TikTok" id="footer-tiktok">♪</a>
+        <a href="https://www.youtube.com/@evatherhino" target="_blank" rel="noopener noreferrer" title="YouTube" id="footer-youtube">▶</a>
+      </div>
+    </div>
+    <div class="footer-admin">
+      <a href="admin.html" title="Admin Panel">⚙</a>
+    </div>
   </footer>
 
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" title="กลับด้านบน" aria-label="Back to top">↑</button>
+
   <script>
+    // ===== Number Animation =====
     function animateNumber(id, endStr, duration = 1500) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -404,6 +473,7 @@
       requestAnimationFrame(update);
     }
 
+    // ===== Scroll Animations =====
     function initScrollAnimations() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -418,19 +488,67 @@
       });
     }
 
+    // ===== Navbar - Hide on scroll down, show on scroll up =====
+    (function() {
+      let lastScrollY = window.scrollY;
+      const navbar = document.getElementById('navbar');
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          navbar.classList.add('hidden');
+        } else {
+          navbar.classList.remove('hidden');
+        }
+        lastScrollY = currentScrollY;
+
+        // Update active nav link
+        const sections = ['section-overview', 'section-audience', 'section-rate', 'section-booking'];
+        let activeSection = sections[0];
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 120) {
+            activeSection = id;
+          }
+        }
+        document.querySelectorAll('.navbar-links a').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + activeSection);
+        });
+      });
+    })();
+
+    // ===== Back to Top Button =====
+    (function() {
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // ===== Load Data =====
     async function loadData() {
       try {
         const res = await fetch('/api/data');
         const data = await res.json();
 
+        // Remove skeletons
+        document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+
         // General
         document.getElementById('tagline').innerText = data.general.tagline;
         document.getElementById('window').innerText = data.general.window;
         document.getElementById('tiktokHandle').innerText = data.general.tiktokHandle;
-        document.getElementById('tiktokHandle').href = data.general.tiktokUrl;
+        document.getElementById('tiktokLink').href = data.general.tiktokUrl;
         document.getElementById('youtubeHandle').innerText = data.general.youtubeHandle;
-        document.getElementById('youtubeHandle').href = data.general.youtubeUrl;
+        document.getElementById('youtubeLink').href = data.general.youtubeUrl;
         document.getElementById('bio').innerText = data.general.bio;
+
+        // Update footer social links
+        document.getElementById('footer-tiktok').href = data.general.tiktokUrl;
+        document.getElementById('footer-youtube').href = data.general.youtubeUrl;
 
         // Overview
         animateNumber('totalFollowers', data.overview.totalFollowers);
@@ -501,13 +619,17 @@
         document.getElementById('active_start').innerText = data.activeHours.peakStart;
         document.getElementById('active_end').innerText = data.activeHours.peakEnd;
 
+        // Top Performance Cards
         const perfCards = document.getElementById('perf-cards-container');
         perfCards.innerHTML = '';
         data.topPerformance.forEach((p, i) => {
-          let thumbHtml = p.thumbnail ? `<div class="perf-thumb" style="background-image: url('${p.thumbnail}'); background-size: cover; background-position: center;"><div class="perf-badge">0${i + 1}</div></div>` : `<div class="perf-thumb"><div class="perf-badge">0${i + 1}</div><div class="thumb-icon">🖼️</div><div class="thumb-text">ลากรูป thumbnail</div></div>`;
-          perfCards.innerHTML += `<div class="perf-card">${thumbHtml}<div class="perf-info"><div class="p-views">${p.views} <span class="p-view-lbl">VIEWS</span></div><div class="p-title">${p.url ? `<a href="${p.url}" target="_blank" class="title-link">${p.title}</a>` : p.title}</div><div class="p-type">${p.type}</div></div></div>`;
+          let thumbHtml = p.thumbnail
+            ? `<div class="perf-thumb" style="background-image: url('${p.thumbnail}'); background-size: cover; background-position: center;"><div class="perf-badge">0${i + 1}</div></div>`
+            : `<div class="perf-thumb"><div class="perf-badge">0${i + 1}</div><div class="thumb-icon">🖼️</div><div class="thumb-text">ลากรูป thumbnail</div></div>`;
+          perfCards.innerHTML += `<div class="perf-card animate-on-scroll">${thumbHtml}<div class="perf-info"><div class="p-views">${p.views} <span class="p-view-lbl">VIEWS</span></div><div class="p-title">${p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="title-link">${p.title}</a>` : p.title}</div><div class="p-type">${p.type}</div></div></div>`;
         });
 
+        // Rate Table
         const rateTable = document.getElementById('rate-table-container');
         rateTable.innerHTML = `
           <div class="r-row r-header">
@@ -538,10 +660,20 @@
           `;
         });
 
+        // Terms (dynamic from data)
+        if (data.termsBooking && data.termsBooking.terms) {
+          const termsList = document.getElementById('terms-list');
+          termsList.innerHTML = '';
+          data.termsBooking.terms.forEach(t => {
+            termsList.innerHTML += `<li>${t}</li>`;
+          });
+        }
+
         // Booking
         document.getElementById('contact_email').innerText = data.termsBooking.email;
         document.getElementById('contact_discord').innerText = data.termsBooking.discord;
 
+        // Re-init animations for newly created elements
         initScrollAnimations();
 
       } catch (e) {
@@ -549,21 +681,8 @@
       }
     }
 
-    function initScrollAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.observe(el);
-      });
-    }
-
-    // Load data on start
+    // Init
+    initScrollAnimations();
     loadData();
   </script>
 </body>

@@ -1,5 +1,6 @@
 let appData = {};
 let currentPassword = '';
+let hasUnsavedChanges = false;
 
 function showToast(message, type = 'success') {
   const container = document.getElementById('toast-container');
@@ -13,6 +14,29 @@ function showToast(message, type = 'success') {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+
+// Track unsaved changes
+function markDirty() {
+  if (!hasUnsavedChanges) {
+    hasUnsavedChanges = true;
+    const saveBtn = document.getElementById('saveBtn');
+    if (saveBtn) saveBtn.classList.add('has-changes');
+  }
+}
+
+function markClean() {
+  hasUnsavedChanges = false;
+  const saveBtn = document.getElementById('saveBtn');
+  if (saveBtn) saveBtn.classList.remove('has-changes');
+}
+
+// Warn before leaving with unsaved changes
+window.addEventListener('beforeunload', (e) => {
+  if (hasUnsavedChanges) {
+    e.preventDefault();
+    e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+  }
+});
 
 async function login() {
   const pwd = document.getElementById('password').value;
@@ -55,63 +79,95 @@ function populateForm() {
   // Populate flat inputs
   const flatFields = [
     'general.name', 'general.tagline', 'general.window', 'general.bio',
+    'general.tiktokHandle', 'general.tiktokUrl', 'general.youtubeHandle', 'general.youtubeUrl',
     'overview.totalFollowers', 'overview.totalFollowersGrowth', 'overview.views', 'overview.engagement', 'overview.watchTime',
     'tiktokStats.followers', 'tiktokStats.videoViews', 'tiktokStats.totalViewers', 'tiktokStats.likes', 'tiktokStats.shares', 'tiktokStats.profileViews', 'tiktokStats.male', 'tiktokStats.female', 'tiktokStats.thai',
-    'youtubeStats.views', 'youtubeStats.impressions', 'youtubeStats.ctr', 'youtubeStats.watchHrs', 'youtubeStats.avgView', 'youtubeStats.fromShorts',
+    'youtubeStats.views', 'youtubeStats.impressions', 'youtubeStats.ctr', 'youtubeStats.watchHrs', 'youtubeStats.avgView', 'youtubeStats.fromShorts', 'youtubeStats.male', 'youtubeStats.female',
     'ageStats.age2534', 'ageStats.age3544', 'ageStats.age1824', 'ageStats.age4554', 'ageStats.age1317',
     'growthChart.start', 'growthChart.end', 'growthChart.diff',
     'location.mainPercent', 'location.mainCountry', 'location.others',
-    'activeHours.peakStart', 'activeHours.peakEnd'
+    'activeHours.peakStart', 'activeHours.peakEnd',
+    'termsBooking.email', 'termsBooking.discord'
   ];
 
   flatFields.forEach(field => {
     const el = document.getElementById(field);
     if (el) {
       const parts = field.split('.');
-      el.value = appData[parts[0]][parts[1]] || '';
+      const section = appData[parts[0]];
+      if (section && section[parts[1]] !== undefined) {
+        el.value = section[parts[1]];
+      } else {
+        el.value = '';
+      }
     }
   });
+
+  // Populate terms (array -> newline-separated text)
+  const termsEl = document.getElementById('termsBooking.terms');
+  if (termsEl && appData.termsBooking && appData.termsBooking.terms) {
+    termsEl.value = appData.termsBooking.terms.join('\n');
+  }
 
   // Populate Top Perf
   const perfContainer = document.getElementById('top-perf-container');
   perfContainer.innerHTML = '';
-  appData.topPerformance.forEach((item, index) => {
-    perfContainer.innerHTML += `
-      <div class="list-item">
-        <strong>Item ${index + 1}</strong>
-        <div class="row" style="margin-bottom: 10px; margin-top: 5px;">
-          <div class="col" style="display:flex; gap:10px;">
-            <input type="text" id="perf_${index}_url" placeholder="Paste TikTok URL here to auto-fill (Optional)" style="flex:1;" value="${item.url || ''}">
-            <button type="button" class="btn" onclick="fetchTikTok(${index})" style="padding: 5px 15px; font-size: 14px;">Fetch from TikTok</button>
+  if (appData.topPerformance) {
+    appData.topPerformance.forEach((item, index) => {
+      perfContainer.innerHTML += `
+        <div class="list-item">
+          <strong>Item ${index + 1}</strong>
+          <div class="row" style="margin-bottom: 10px; margin-top: 5px;">
+            <div class="col" style="display:flex; gap:10px;">
+              <input type="text" id="perf_${index}_url" placeholder="Paste TikTok URL here to auto-fill (Optional)" style="flex:1;" value="${item.url || ''}">
+              <button type="button" class="btn" onclick="fetchTikTok(${index})" style="padding: 5px 15px; font-size: 14px;">Fetch from TikTok</button>
+            </div>
           </div>
+          <div class="row">
+            <div class="col"><label>Title</label><input type="text" id="perf_${index}_title" value="${escapeHtml(item.title)}"></div>
+            <div class="col"><label>Views</label><input type="text" id="perf_${index}_views" value="${item.views}"></div>
+            <div class="col"><label>Type</label><input type="text" id="perf_${index}_type" value="${item.type}"></div>
+          </div>
+          <div class="row" style="margin-top:10px;">
+            <div class="col"><label>Thumbnail URL</label><input type="text" id="perf_${index}_thumbnail" value="${item.thumbnail || ''}"></div>
+          </div>
+          <div id="perf_${index}_status" style="font-size:12px; margin-top:5px; font-weight:bold;"></div>
         </div>
-        <div class="row">
-          <div class="col"><label>Title</label><input type="text" id="perf_${index}_title" value="${item.title}"></div>
-          <div class="col"><label>Views</label><input type="text" id="perf_${index}_views" value="${item.views}"></div>
-          <div class="col"><label>Type</label><input type="text" id="perf_${index}_type" value="${item.type}"></div>
-        </div>
-        <div class="row" style="margin-top:10px;">
-          <div class="col"><label>Thumbnail URL</label><input type="text" id="perf_${index}_thumbnail" value="${item.thumbnail || ''}"></div>
-        </div>
-        <div id="perf_${index}_status" style="font-size:12px; margin-top:5px; font-weight:bold;"></div>
-      </div>
-    `;
-  });
+      `;
+    });
+  }
 
   // Populate Rate Card
   const rateContainer = document.getElementById('rate-card-container');
   rateContainer.innerHTML = '';
-  appData.rateCard.forEach((item, index) => {
-    rateContainer.innerHTML += `
-      <div class="list-item">
-        <strong>Package ${index + 1}</strong>
-        <div class="row">
-          <div class="col"><label>Name</label><input type="text" id="rate_${index}_name" value="${item.name}"></div>
-          <div class="col"><label>Price</label><input type="text" id="rate_${index}_price" value="${item.price}"></div>
+  if (appData.rateCard) {
+    appData.rateCard.forEach((item, index) => {
+      rateContainer.innerHTML += `
+        <div class="list-item">
+          <strong>Package ${index + 1}</strong>
+          <div class="row">
+            <div class="col"><label>Name</label><input type="text" id="rate_${index}_name" value="${escapeHtml(item.name)}"></div>
+            <div class="col"><label>Price</label><input type="text" id="rate_${index}_price" value="${item.price}"></div>
+          </div>
         </div>
-      </div>
-    `;
-  });
+      `;
+    });
+  }
+
+  // Attach change listeners to all inputs/textareas for dirty tracking
+  setTimeout(() => {
+    document.querySelectorAll('#admin-form input, #admin-form textarea').forEach(el => {
+      el.addEventListener('input', markDirty);
+    });
+  }, 100);
+}
+
+// Helper to escape HTML in values to prevent XSS in admin form
+function escapeHtml(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 }
 
 async function fetchTikTok(index) {
@@ -135,6 +191,7 @@ async function fetchTikTok(index) {
       if (data.views !== undefined) {
         document.getElementById(`perf_${index}_views`).value = data.views.toLocaleString('en-US');
       }
+      markDirty();
       showToast("Fetch successful!", "success");
     } else {
       showToast("Failed to fetch data from TikTok.", "error");
@@ -150,24 +207,32 @@ async function saveData() {
     // Gather flat fields
     const flatFields = [
       'general.name', 'general.tagline', 'general.window', 'general.bio',
+      'general.tiktokHandle', 'general.tiktokUrl', 'general.youtubeHandle', 'general.youtubeUrl',
       'overview.totalFollowers', 'overview.totalFollowersGrowth', 'overview.views', 'overview.engagement', 'overview.watchTime',
       'tiktokStats.followers', 'tiktokStats.videoViews', 'tiktokStats.totalViewers', 'tiktokStats.likes', 'tiktokStats.shares', 'tiktokStats.profileViews', 'tiktokStats.male', 'tiktokStats.female', 'tiktokStats.thai',
-      'youtubeStats.views', 'youtubeStats.impressions', 'youtubeStats.ctr', 'youtubeStats.watchHrs', 'youtubeStats.avgView', 'youtubeStats.fromShorts',
+      'youtubeStats.views', 'youtubeStats.impressions', 'youtubeStats.ctr', 'youtubeStats.watchHrs', 'youtubeStats.avgView', 'youtubeStats.fromShorts', 'youtubeStats.male', 'youtubeStats.female',
       'ageStats.age2534', 'ageStats.age3544', 'ageStats.age1824', 'ageStats.age4554', 'ageStats.age1317',
       'growthChart.start', 'growthChart.end', 'growthChart.diff',
       'location.mainPercent', 'location.mainCountry', 'location.others',
-      'activeHours.peakStart', 'activeHours.peakEnd'
+      'activeHours.peakStart', 'activeHours.peakEnd',
+      'termsBooking.email', 'termsBooking.discord'
     ];
 
     flatFields.forEach(field => {
       const el = document.getElementById(field);
       if (el) {
         const parts = field.split('.');
-        if(appData[parts[0]]) {
-           appData[parts[0]][parts[1]] = el.value;
-        }
+        if (!appData[parts[0]]) appData[parts[0]] = {};
+        appData[parts[0]][parts[1]] = el.value;
       }
     });
+
+    // Gather terms (newline-separated text -> array)
+    const termsEl = document.getElementById('termsBooking.terms');
+    if (termsEl) {
+      if (!appData.termsBooking) appData.termsBooking = {};
+      appData.termsBooking.terms = termsEl.value.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+    }
 
     // Gather Top Perf
     if (appData.topPerformance) {
@@ -211,6 +276,7 @@ async function saveData() {
     const result = await res.json();
     if (res.ok && result.success) {
       showToast('บันทึกข้อมูลเรียบร้อยแล้ว! (Saved Successfully!)', 'success');
+      markClean();
     } else {
       showToast('Error: ' + (result.error || 'Failed to save.'), 'error');
     }
