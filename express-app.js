@@ -107,7 +107,8 @@ app.post('/api/data', async (req, res) => {
         await writeData(data);
         res.json({ success: true, message: 'Data updated successfully' });
     } catch (err) {
-        res.status(500).json({ error: 'Failed to save data' });
+        console.error('Save error:', err);
+        res.status(500).json({ error: 'Failed to save data: ' + err.message });
     }
 });
 
