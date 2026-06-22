@@ -153,6 +153,24 @@ body {
   background: rgba(227, 48, 61, 0.15);
 }
 
+.navbar-admin {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 18px;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.navbar-admin:hover {
+  color: #fff;
+  background: rgba(227, 48, 61, 0.2);
+  transform: rotate(90deg);
+}
+
 /* Body offset for fixed navbar */
 body {
   padding-top: 56px;
