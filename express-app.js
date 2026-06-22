@@ -10,7 +10,7 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Admin password from ENV or hardcoded local fallback
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
