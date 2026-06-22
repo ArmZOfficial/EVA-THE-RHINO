@@ -1,0 +1,131 @@
+{
+  "general": {
+    "name": "EVA THE RHINO",
+    "tagline": "VTUBER CONTENT CREATOR",
+    "window": "PERFORMANCE WINDOW: 19 APR - 17 JUN 2026",
+    "tiktokHandle": "TikTok @evatherhino",
+    "tiktokUrl": "https://www.tiktok.com/@evatherhino",
+    "youtubeHandle": "YouTube EVA THE RHINO",
+    "youtubeUrl": "https://www.youtube.com/@evatherhino",
+    "bio": "EVA THE RHINO เป็น VTuber / Content Creator คาแรกเตอร์พี่สาวสุดเซ็กซี่ เน้นคอนเทนต์เล่าเรื่อง เพลงคัฟเวอร์ คลิปไวรัลเรียกเสียงฮา และไลฟ์สด ฐานแฟนหลักเป็นชายไทยวัยทำงาน 25-34 ปี ที่มีอัตรา engagement สูงเป็นพิเศษ"
+  },
+  "overview": {
+    "totalFollowers": "33.1K",
+    "totalFollowersGrowth": "▲ 25.7% / 60 วัน",
+    "views": "1.31M",
+    "engagement": "17.2%",
+    "watchTime": "1,430"
+  },
+  "tiktokStats": {
+    "followers": "33,101",
+    "videoViews": "1,160,535",
+    "totalViewers": "805,613",
+    "likes": "182,295",
+    "shares": "14,050",
+    "profileViews": "33,432",
+    "male": "83",
+    "female": "16",
+    "thai": "92"
+  },
+  "youtubeStats": {
+    "views": "152,000",
+    "impressions": "354,254",
+    "ctr": "5.01%",
+    "watchHrs": "1,430",
+    "avgView": "0:01:01",
+    "fromShorts": "64%",
+    "male": "74",
+    "female": "26",
+    "coreAge": "25-34"
+  },
+  "ageStats": {
+    "age2534": "46.6",
+    "age3544": "19.6",
+    "age1824": "18.1",
+    "age4554": "7.6",
+    "age1317": "5.3"
+  },
+  "growthChart": {
+    "start": "26,342",
+    "end": "33,101",
+    "diff": "+6,759"
+  },
+  "location": {
+    "mainPercent": "92",
+    "mainCountry": "ประเทศไทย",
+    "others": "ลาว, ญี่ปุ่น, สหรัฐฯ, กัมพูชา, เมียนมา และอื่น ๆ"
+  },
+  "activeHours": {
+    "peakStart": "17:00",
+    "peakEnd": "21:00"
+  },
+  "topPerformance": [
+    {
+      "views": "269,400",
+      "title": "เช็คด่วน ! อาการเป็น ไข้ ที่ปัจจุบันโลกของเรายังไม่มียารักษา #fyp #viral #tiktok #love #vtuber ",
+      "type": "Story Telling (TikTok)",
+      "thumbnail": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/o8CeIpACfAC0AzDdEpyYKjIgLFR0CmzAQcEEBJ~tplv-tiktokx-origin.image?dr=14575&x-expires=1782288000&x-signature=it%2F%2BeFrPRY%2BX%2Fn5ky9soou1OhC0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2",
+      "url": "https://www.tiktok.com/@evatherhino/video/7608869933304253717"
+    },
+    {
+      "views": "175,850",
+      "title": "Pretty girl - kimgun // Cover by  พี่สาวคนนี้ขอเป็นเคะบ้างได้มั้ย😏🔥 #vtuber #cover #prettygirls #music #singing ",
+      "type": "COVER SONG (TikTok)",
+      "thumbnail": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/oM7Ig6ykGGfhEQTDNwLHAwQIGAfSAkJeRAJnAf~tplv-tiktokx-origin.image?dr=14575&x-expires=1782288000&x-signature=8AvysiuRvxlDH2LZJ7CGZHHQNeY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2",
+      "url": "https://www.tiktok.com/@evatherhino/video/7629658589233237268"
+    },
+    {
+      "views": "167,100",
+      "title": "ฉันรักเธอมาตั้งนานแล้ว เรื่องอะไรต้องยอมเขา 💀 ❤️‍🔥  NEXT LOVE - BADMIXY ( R&B ) / EVA THE RHINO (cover) 🗓️ รอบ Premiere : 1 MAY 2026 | 18:00 (GMT+7)  (ช่องทางYT) #tiktok #vtuber #trending #cover #music ",
+      "type": "R&B COVER - PREMIERE (TikTok)",
+      "thumbnail": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/oU3Ix9iDAAbFOtKXCMK55rwEBfAPiAA1VBA0vI~tplv-tiktokx-origin.image?dr=14575&x-expires=1782288000&x-signature=%2BQ9nnUS%2F8F5mly5JR9zgeGOfBkE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=my2",
+      "url": "https://www.tiktok.com/@evatherhino/video/7633009239903997205"
+    }
+  ],
+  "rateCard": [
+    {
+      "name": "Dedicated Long Video",
+      "price": "฿4,500",
+      "isMain": false,
+      "isBundle": false,
+      "startFrom": false
+    },
+    {
+      "name": "Dedicated Short Video",
+      "price": "฿2,000",
+      "isMain": true,
+      "isBundle": false,
+      "startFrom": false
+    },
+    {
+      "name": "Cover Song",
+      "price": "฿10,000",
+      "isMain": false,
+      "isBundle": false,
+      "startFrom": true
+    },
+    {
+      "name": "Live Stream /1hr",
+      "price": "฿3,500",
+      "isMain": false,
+      "isBundle": false,
+      "startFrom": false
+    },
+    {
+      "name": "Creator Bundle (2 Short + 1 Live Stream)",
+      "price": "฿7,000",
+      "isMain": false,
+      "isBundle": true,
+      "startFrom": false
+    }
+  ],
+  "termsBooking": {
+    "terms": [
+      "รับเงินในนามบุคคลธรรมดา",
+      "มัดจำ 50% ก่อนเริ่มงาน ส่วนที่เหลือชำระเมื่อส่งมอบ",
+      "ลิขสิทธิ์เพลง/เสียงเป็นของผู้ว่าจ้างตามตกลง"
+    ],
+    "email": "evatherhino23@gmail.com",
+    "discord": "evatherhino"
+  }
+}
